@@ -58,15 +58,26 @@ void bfs(int r,int c,vector<vector<int>>arr)
             int nr=row+rarr[i];
             int nc=col+carr[i];
 
-            if(nr>=0 and nr<n and nc>0 and nc<n and vis[nr][nc]==0)
+            if(nr>=0 and nr<n and nc>=0 and nc<n and vis[nr][nc]==0)
             {
                 vis[nr][nc]=1;
                 que.push({nr,nc});
             }
         }
-    }
-    
+    }    
 }
+
+void dfs(int node,vector<int>adj[],vector<int>&vis)
+{
+    vis[node]=1;
+    for(auto it:adj[node])
+    {
+        if(vis[it]==0)
+        dfs(it,adj,vis);
+    }
+}
+
+
 
 int main()
 {
